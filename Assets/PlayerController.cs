@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    void FixedUpdate()
+    void Update()
     {
         var gamepad = Gamepad.current;
         if (gamepad == null)
@@ -28,8 +28,14 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 move = gamepad.leftStick.ReadValue();
+        Debug.Log(move);
         // 'Move' code here
-        transform.GetComponent<Rigidbody>().velocity = move;
+        transform.GetComponent<Rigidbody>().velocity = new Vector3(move.x,0.0f,move.y) * 10f;
+
+        Vector2 moveCamera = gamepad.rightStick.ReadValue();
+        
+        transform.GetChild(0).transform.localEulerAngles += new Vector3(-moveCamera.y,moveCamera.x);
+
 
     }
 }
