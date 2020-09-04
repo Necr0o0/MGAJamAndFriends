@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private float minX = 60f;
+    private float maxX = 60f;
+    Vector2 moveCamera = new Vector2();
+
     void Update()
     {
         var gamepad = Gamepad.current;
@@ -27,14 +31,22 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Shoot!");
         }
 
+     
+        
+        
+        moveCamera += gamepad.rightStick.ReadValue();
+        moveCamera.y = Mathf.Clamp(moveCamera.y, -60f, 60f);
+        
+        
+        transform.GetChild(0).transform.localEulerAngles = new Vector3(-moveCamera.y,0,0);
+        transform.localEulerAngles = new Vector3(0,moveCamera.x,0);
+
         Vector2 move = gamepad.leftStick.ReadValue();
         Debug.Log(move);
         // 'Move' code here
-        transform.GetComponent<Rigidbody>().velocity = new Vector3(move.x,0.0f,move.y) * 10f;
-
-        Vector2 moveCamera = gamepad.rightStick.ReadValue();
-        
-        transform.GetChild(0).transform.localEulerAngles += new Vector3(-moveCamera.y,moveCamera.x);
+        var moveDir = (move.x * transform.right + move.y * transform.forward).normalized;
+        transform.GetComponent<Rigidbody>().velocity = moveDir * 10f ;
+      
 
 
     }
