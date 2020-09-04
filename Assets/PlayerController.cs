@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Transform camera;
     private Transform player;
     public WeaponController weapon;
+    private float maxVelocity = 20f;
 
     private void Awake()
     {

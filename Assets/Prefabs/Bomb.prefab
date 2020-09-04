@@ -5003,3 +5003,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a04f7888c26ea499c5e1fd0bca2959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackRadius: 4
