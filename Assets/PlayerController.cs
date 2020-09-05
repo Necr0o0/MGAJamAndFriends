@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private float minX = 60f;
-    private float maxX = 60f;
     private Vector2 moveCamera;
     private Rigidbody rb;
     private Gamepad gamepad;
