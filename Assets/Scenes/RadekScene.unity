@@ -2122,25 +2122,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316271657}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &390333602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 390333602, guid: c3c982ca31bbb0b4787511a6da24f50c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7982717323561633411}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &390333603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390333602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49f18b9ccf817dc4c9f550bb13d9ec22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectPool: []
 --- !u!1 &414976192
 GameObject:
   m_ObjectHideFlags: 0
@@ -13123,10 +13104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 390333602, guid: c3c982ca31bbb0b4787511a6da24f50c, type: 3}
-      propertyPath: m_Name
-      value: BombPool
-      objectReference: {fileID: 0}
     - target: {fileID: 1924762508259071154, guid: c3c982ca31bbb0b4787511a6da24f50c,
         type: 3}
       propertyPath: m_Name
