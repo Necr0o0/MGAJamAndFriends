@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c9ea01fcf9f034d97a989c83eab875, type: 3}
   m_Name: Damage Ammo
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 1, g: 0, b: 0, a: 1}
   ammoEvents:
   - action: 0
-    range: 10
-    power: 10
+    range: 2
+    power: 100
