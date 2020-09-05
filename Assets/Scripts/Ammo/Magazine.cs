@@ -61,6 +61,7 @@ public class Magazine : MonoBehaviour
     {
         magazine.Clear();
         currentIndex = 0;
+        var texture2 = Resources.Load<Texture2D>("Pyrka");
         texture = new Texture2D(size.x, size.y);
         for (int y = size.y -1 ; y >= 0; y--)
         {
@@ -68,7 +69,7 @@ public class Magazine : MonoBehaviour
             {
                 Ammo randomAmmo = RandomAmmo();
                 magazine.Add(randomAmmo);
-                texture.SetPixel(x, y, randomAmmo.Color);
+                texture.SetPixel(x, y, texture2.GetPixel(x,y));
             }
         }
     }
