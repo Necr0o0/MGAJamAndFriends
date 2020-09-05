@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Transform player;
     public WeaponController weapon;
     private float maxVelocity = 20f;
+    private float jumpPower = 10f;
 
     private void Awake()
     {
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
            weapon.Shoot();
+        }
+
+        if (gamepad.aButton.wasPressedThisFrame)
+        {
+            rb.velocity += Vector3.up * jumpPower;
         }
         
         moveCamera += gamepad.rightStick.ReadValue();
