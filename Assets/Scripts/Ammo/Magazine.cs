@@ -10,7 +10,8 @@ public class Magazine : MonoBehaviour
     [SerializeField] private RawImage image = default;
     [SerializeField] private AmmoColorPallette pallette = default;
     [SerializeField] private Vector2Int size = new Vector2Int(8, 8);
-    
+    public int MagazineSize => size.x * size.y;
+
     private Texture2D texture;
     public List<Ammo> magazine = new List<Ammo>();
     private int currentIndex;

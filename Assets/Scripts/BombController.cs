@@ -4,10 +4,9 @@ using Random = UnityEngine.Random;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] private new Renderer renderer;
+    [SerializeField] private new Renderer renderer = default;
     
     [Space]
-    [SerializeField] private float knockbackPower = 500f;
     [SerializeField] private float knockbackRadius = 3f;
 
     private Ammo ammo;
@@ -43,14 +42,11 @@ public class BombController : MonoBehaviour
 
     private void Boom()
     {
+        AmmoActions.UseEvents(transform.position, ammo.ammoEvents);
+        
         foreach (var collider in  Physics.OverlapSphere(transform.position, knockbackRadius))
         {
-            Debug.Log("odrzut!");
-            if(collider.GetComponent<Rigidbody>())
-                collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position- transform.position) * knockbackPower);
-                
             collider.SendMessage("Explosion",SendMessageOptions.DontRequireReceiver);
-
         }
         foreach (var collider in  Physics.OverlapSphere(transform.position, knockbackRadius*10))
         {
