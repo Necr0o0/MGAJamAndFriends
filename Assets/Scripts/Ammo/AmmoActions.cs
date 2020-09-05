@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Microsoft.Win32;
 using UnityEngine;
@@ -9,6 +10,14 @@ public static class AmmoActions
     {
         Damage,
         PushBack
+    }
+
+    public static void UseEvents(Vector3 origin, List<AmmoEvent> ammoEvents)
+    {
+        foreach (AmmoEvent ammoEvent in ammoEvents)
+        {
+            UseEvent(origin, ammoEvent);
+        }
     }
 
     public static void UseEvent(Vector3 origin, AmmoEvent ammoEvent)

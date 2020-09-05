@@ -23,17 +23,11 @@ public class Magazine : MonoBehaviour
         image.texture = texture;
     }
 
-    private void Update()
-    {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-            Shoot();
-    }
-
     public Ammo Shoot()
     {
         Ammo ret = magazine[currentIndex];
         magazine[currentIndex] = null;
-        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, Color.clear);
+        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, FadeColor(ret.Color));
         texture.Apply();
         currentIndex++;
         return ret;
@@ -59,5 +53,11 @@ public class Magazine : MonoBehaviour
     {
         return pallette.allAmmo[Random.Range(0, pallette.allAmmo.Count)];
         //return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+    }
+
+    private Color FadeColor(Color original)
+    {
+        original.a = 0.2f;
+        return original;
     }
 }

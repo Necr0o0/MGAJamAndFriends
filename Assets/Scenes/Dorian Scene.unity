@@ -609,6 +609,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5450594585621561644, guid: b89990a40ca176c43b125bb7357537ff,
+        type: 3}
+      propertyPath: magazine
+      value: 
+      objectReference: {fileID: 2038840621}
+    - target: {fileID: 5450594585621561644, guid: b89990a40ca176c43b125bb7357537ff,
+        type: 3}
+      propertyPath: ammo
+      value: 36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89990a40ca176c43b125bb7357537ff, type: 3}
 --- !u!1001 &1977965174
@@ -718,6 +728,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 181935689}
+  pallette: {fileID: 11400000, guid: 9948204d181fda14384454cbd9589b86, type: 2}
+  size: {x: 6, y: 6}
+  magazine: []
 --- !u!114 &2038840622
 MonoBehaviour:
   m_ObjectHideFlags: 0

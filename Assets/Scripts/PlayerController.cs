@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
             return; // No gamepad connected.
         }
 
-        if (gamepad.rightTrigger.wasPressedThisFrame)
+        if (gamepad.rightTrigger.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
            weapon.Shoot();
         }
