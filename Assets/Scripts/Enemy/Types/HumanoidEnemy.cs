@@ -51,5 +51,6 @@ public class HumanoidEnemy : Enemy
     {
         Vector3 distance = transform.position - playerFinder.Player.position;
         Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(distance.normalized), Time.deltaTime * 10f);
+        rb.MovePosition(transform.position - distance.normalized * (speed * Time.fixedDeltaTime));
     }
 }

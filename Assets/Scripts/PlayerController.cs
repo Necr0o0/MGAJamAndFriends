@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public WeaponController weapon;
+
+    [Space]
+    [SerializeField] private float maxVelocity = 20f;
+    [SerializeField] private float jumpPower = 10f;
+    
+    public static Transform TransformComponent { get; private set; }
+    
     private Vector2 moveCamera;
     private Rigidbody rb;
     private Gamepad gamepad;
-    private Transform camera;
-    private Transform player;
-    public WeaponController weapon;
-    private float maxVelocity = 20f;
-    private float jumpPower = 10f;
+    private new Transform camera;
+    private new Transform transform;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        transform = ((Component) this).transform;
+        TransformComponent = transform;
         camera = transform.GetChild(0);
-        player = transform;
     }
 
     void Update()
@@ -45,13 +48,10 @@ public class PlayerController : MonoBehaviour
         
         
         camera.localEulerAngles = new Vector3(-moveCamera.y,0,0);
-        player.localEulerAngles = new Vector3(0,moveCamera.x,0);
+        transform.localEulerAngles = new Vector3(0,moveCamera.x,0);
 
         Vector2 move = gamepad.leftStick.ReadValue();
-        var moveDir = (move.x * player.right + move.y * player.forward).normalized;
-        rb.velocity = moveDir * 10f ;
-      
-
-
+        var moveDir = (move.x * transform.right + move.y * transform.forward).normalized;
+        rb.velocity = moveDir * 10f;
     }
 }
