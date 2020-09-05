@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 2319982734481033019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1208488429823601277}
   - {fileID: 4667558986188926195}
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 4239462833061503551}
-  knockbackPower: 500
   knockbackRadius: 4
 --- !u!1001 &8397576768807029130
 PrefabInstance:
