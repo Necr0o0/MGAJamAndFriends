@@ -35,18 +35,9 @@ public class BombController : MonoBehaviour
                 Debug.Log("odrzut!");
                 if(collider.GetComponent<Rigidbody>())
                     collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position- transform.position) * knockbackPower);
+                
+                collider.SendMessage("Explosion",SendMessageOptions.DontRequireReceiver);
 
-                if (collider.transform.GetComponent<PlayerController>())
-                {
-                    collider.transform.GetComponent<PlayerController>().enabled = false;
-                    var sequnenceLost = DOTween.Sequence();
-                    sequnenceLost.AppendInterval(1f);
-                    sequnenceLost.OnComplete(() =>
-                    {
-                        collider.transform.GetComponent<PlayerController>().enabled = true;
-
-                    });
-                }
             }
 
             GameManager.singleton.explosionPool.GetObject(transform.position);
