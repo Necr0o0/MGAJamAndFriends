@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &783898312912330559
 Transform:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.7
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -284,8 +284,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1057,13 +1057,13 @@ ParticleSystem:
           inWeight: 0.3867427
           outWeight: 0.41794148
         - serializedVersion: 3
-          time: 0.88189715
-          value: 0
-          inSlope: -2.7136486
-          outSlope: -2.7136486
+          time: 0.6929323
+          value: 0.18461609
+          inSlope: -4.0816846
+          outSlope: -4.0816846
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.41510403
+          inWeight: 0.49744305
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4833,7 +4833,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f64bf0cb51591e42b8b65585fe27158, type: 2}
+  - {fileID: 2100000, guid: b77fefbcfb646f844bde42d1cb2e2ac0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
