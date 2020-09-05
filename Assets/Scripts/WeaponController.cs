@@ -7,22 +7,17 @@ using Random = UnityEngine.Random;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private Magazine magazine = default;
-    [SerializeField] private Rigidbody playerRb;
+    [SerializeField] private Rigidbody playerRb = default;
     
     public GameObject Bullet;
     
-    private int ammo;
-
-    private void Start()
-    {
-        ammo = magazine.MagazineSize;
-    }
+    private int currentShoots = 0;
 
     public void Shoot()
     {
-        if (ammo > 0)
+        if (currentShoots < magazine.MagazineSize)
         {
-            ammo--;
+            currentShoots++;
             var bullet = GameManager.singleton.bombPool.GetObject(transform.position + playerRb.transform.forward);
 
             BombController bomb = bullet.GetComponent<BombController>();

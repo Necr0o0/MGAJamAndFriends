@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
-using UnityEngine.InputSystem;
 
 public class Magazine : MonoBehaviour
 {
     [SerializeField] private RawImage image = default;
     [SerializeField] private AmmoColorPallette pallette = default;
+    [SerializeField] private ImageLoader imageLoader = default;
     [SerializeField] private Vector2Int size = new Vector2Int(8, 8);
     public int MagazineSize => size.x * size.y;
 
     private Texture2D texture;
-    public List<Ammo> magazine = new List<Ammo>();
+    private List<Ammo> magazine = new List<Ammo>();
     private int currentIndex;
 
-    private void Awake()
+    private void Start()
     {
-        GenerateTexture();
+        LoadNewTexture();
         texture.filterMode = FilterMode.Point;
         texture.Apply();
         image.texture = texture;
@@ -28,11 +28,34 @@ public class Magazine : MonoBehaviour
     {
         Ammo ret = magazine[currentIndex];
         magazine[currentIndex] = null;
-        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, FadeColor(ret.Color));
+        int x = currentIndex % size.x;
+        int y = size.y - 1 - currentIndex / size.y;
+        texture.SetPixel(x, y, FadeColor(ret.Color));
         texture.Apply();
+        image.texture = texture;
         currentIndex++;
         return ret;
-    } 
+    }
+
+    private void LoadNewTexture()
+    {
+        Texture2D newTexture = imageLoader.GetRandomTexture();
+        
+        texture = new Texture2D(newTexture.width, newTexture.height, newTexture.format, false);
+        Graphics.CopyTexture(newTexture, texture);
+        
+        size = new Vector2Int(newTexture.width, newTexture.height);
+        magazine.Clear();
+        currentIndex = 0;
+
+        for (int y = size.y - 1; y >= 0; y--)
+        {
+            for (int x = 0; x < size.x; x++)
+            {
+                magazine.Add(pallette.GetAmmoFromColor(texture.GetPixel(x, y)));
+            }
+        }
+    }
     
     private void GenerateTexture()
     {
@@ -58,7 +81,6 @@ public class Magazine : MonoBehaviour
 
     private Color FadeColor(Color original)
     {
-        original.a = 0.2f;
-        return original;
+        return Color.black;
     }
 }
