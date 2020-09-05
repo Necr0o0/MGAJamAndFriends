@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] private float maxVelocity = 20f;
     [SerializeField] private float jumpPower = 10f;
+    private bool isGrounded;
     
     public static Transform TransformComponent { get; private set; }
     
@@ -26,6 +28,11 @@ public class PlayerController : MonoBehaviour
         camera = transform.GetChild(0);
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        isGrounded = true;
+    }
+
     void Update()
     {
         gamepad = Gamepad.current;
@@ -39,9 +46,10 @@ public class PlayerController : MonoBehaviour
            weapon.Shoot();
         }
 
-        if (gamepad.aButton.wasPressedThisFrame)
+        if (gamepad.aButton.wasPressedThisFrame && isGrounded)
         {
             rb.velocity += Vector3.up * jumpPower;
+            isGrounded = false;
         }
         
         moveCamera += gamepad.rightStick.ReadValue();
@@ -69,5 +77,10 @@ public class PlayerController : MonoBehaviour
         { 
             transform.GetComponent<PlayerController>().enabled = true;
         });
+    }
+    
+    void ScreenShake()
+    {
+        camera.DOShakePosition(0.2f, 1f, 30, 10);
     }
 }
