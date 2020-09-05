@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -36,12 +37,8 @@ public class ObjectPool : MonoBehaviour
     
     public void TurnOff(GameObject toShut)
     {
-        for (int i = 0; i < ObjectPooling.Count; i++)
-        {
-            if (ObjectPooling[i].Equals(toShut))
-            {
-                ObjectPooling[i].SetActive(false);
-            }
-        }
+        toShut.SetActive(false);
+        DOTween.Kill(toShut);
+        
     }
 }
