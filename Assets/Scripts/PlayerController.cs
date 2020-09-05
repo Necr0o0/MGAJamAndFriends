@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
         transform = ((Component) this).transform;
         TransformComponent = transform;
         camera = transform.GetChild(0);
+        gamepad = Gamepad.all[GameManager.singleton.joinedPlayers];
+        GameManager.singleton.joinedPlayers++;
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -40,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        gamepad = Gamepad.current;
         if (gamepad == null)
         {
             return; // No gamepad connected.
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
            weapon.Shoot();
+           camera.DOShakePosition(0.1f, 0.6f , 0, 0);
+
         }
 
         if (gamepad.aButton.wasPressedThisFrame && isGrounded)

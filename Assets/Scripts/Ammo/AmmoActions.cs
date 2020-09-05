@@ -9,7 +9,8 @@ public static class AmmoActions
     public enum Action
     {
         Damage,
-        PushBack
+        PushBack,
+        PullIn
     }
 
     public static void UseEvents(Vector3 origin, List<AmmoEvent> ammoEvents)
@@ -30,6 +31,9 @@ public static class AmmoActions
             case Action.PushBack:
                 PushBack(origin, ammoEvent);
                 break;
+            case Action.PullIn:
+                PullIn(origin, ammoEvent);
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -37,7 +41,19 @@ public static class AmmoActions
 
     private static void DealDamage(Vector3 origin, AmmoEvent ammoEvent)
     {
-        
+        foreach (var collider in Physics.OverlapSphere(origin, ammoEvent.range))
+        {
+            collider.SendMessage("DealDamage", ammoEvent.power);
+        }
+    }
+    
+    private static void PullIn(Vector3 origin, AmmoEvent ammoEvent)
+    {
+        foreach (var collider in  Physics.OverlapSphere(origin, ammoEvent.range))
+        {
+            if(collider.GetComponent<Rigidbody>())
+                collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position - origin) * ammoEvent.power *-1);
+        }
     }
 
     private static void PushBack(Vector3 origin, AmmoEvent ammoEvent)
@@ -45,7 +61,7 @@ public static class AmmoActions
         foreach (var collider in  Physics.OverlapSphere(origin, ammoEvent.range))
         {
             if(collider.GetComponent<Rigidbody>())
-                collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position- origin) * ammoEvent.power);
+                collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position- origin + Vector3.up*10.0f) * ammoEvent.power);
         }
     }
 }

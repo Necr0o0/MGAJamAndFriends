@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52c9ea01fcf9f034d97a989c83eab875, type: 3}
-  m_Name: Damage Ammo
+  m_Name: Pull Ammo
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 1}
   ammoEvents:
-  - action: 0
-    range: 10
-    power: 10
+  - action: 2
+    range: 20
+    power: 100
