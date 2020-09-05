@@ -2,10 +2,9 @@
 using UnityEngine;
 
 [Serializable]
-public abstract class AmmoEvent
+public class AmmoEvent
 {
-    [SerializeField] protected float range = 10f;
-    [SerializeField] protected float power = 10f;
-    
-    public abstract void OnBlow(Vector3 origin);
+    public AmmoActions.Action action = AmmoActions.Action.Damage;
+    public float range = 10f;
+    public float power = 10f;
 }
