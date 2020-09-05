@@ -15,5 +15,11 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   ammoEvents:
   - action: 1
+    range: 8
+    power: 120
+  - action: 3
     range: 4
-    power: 200
+    power: 0
+  - action: 4
+    range: 4
+    power: 0.8
