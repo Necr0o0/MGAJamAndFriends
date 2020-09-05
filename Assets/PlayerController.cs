@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private float minX = 60f;
-    private float maxX = 60f;
     private Vector2 moveCamera;
     private Rigidbody rb;
     private Gamepad gamepad;
     private Transform camera;
     private Transform player;
     public WeaponController weapon;
+    private float maxVelocity = 20f;
+    private float jumpPower = 10f;
 
     private void Awake()
     {
@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
            weapon.Shoot();
+        }
+
+        if (gamepad.aButton.wasPressedThisFrame)
+        {
+            rb.velocity += Vector3.up * jumpPower;
         }
         
         moveCamera += gamepad.rightStick.ReadValue();
