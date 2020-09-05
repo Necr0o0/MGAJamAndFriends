@@ -50,15 +50,8 @@ public class BombController : MonoBehaviour
     {
         AmmoActions.UseEvents(transform.position, ammo.ammoEvents);
         
-        foreach (var collider in  Physics.OverlapSphere(transform.position, knockbackRadius))
-        {
-            collider.SendMessage("Explosion",SendMessageOptions.DontRequireReceiver);
-        }
-        foreach (var collider in  Physics.OverlapSphere(transform.position, knockbackRadius*10))
-        {
-             
-            collider.SendMessage("ScreenShake", Vector3.Magnitude(transform.position - collider.transform.position),SendMessageOptions.DontRequireReceiver);
-        }
+        
+        
 
         GameManager.singleton.explosionPool.GetObject(transform.position);
         transform.gameObject.SetActive(false);
