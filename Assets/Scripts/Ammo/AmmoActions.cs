@@ -44,21 +44,8 @@ public static class AmmoActions
     {
         foreach (var collider in  Physics.OverlapSphere(origin, ammoEvent.range))
         {
-            Debug.Log("odrzut!");
             if(collider.GetComponent<Rigidbody>())
                 collider.transform.GetComponent<Rigidbody>().AddForce((collider.transform.position- origin) * ammoEvent.power);
-
-            if (collider.transform.GetComponent<PlayerController>())
-            {
-                collider.transform.GetComponent<PlayerController>().enabled = false;
-                var sequnenceLost = DOTween.Sequence();
-                sequnenceLost.AppendInterval(1f);
-                sequnenceLost.OnComplete(() =>
-                {
-                    collider.transform.GetComponent<PlayerController>().enabled = true;
-
-                });
-            }
         }
     }
 }

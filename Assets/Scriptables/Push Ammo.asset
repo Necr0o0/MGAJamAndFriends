@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
   ammoEvents:
-  - action: 0
-    range: 10
-    power: 500
+  - action: 1
+    range: 20
+    power: 200

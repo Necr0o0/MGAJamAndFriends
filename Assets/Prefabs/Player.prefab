@@ -108,7 +108,7 @@ Rigidbody:
   m_GameObject: {fileID: 1321978813486919381}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 5450594585621561644}
+  speed: 10
+  lerpIntensity: 2
   maxVelocity: 20
-  jumpPower: 10
+  jumpPower: 6
 --- !u!1 &1321978814635570326
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +260,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5bcec76e66339fe45946863a5fa81dd7, type: 2}
+    - target: {fileID: 3782822505915773233, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: magazine
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782822505915773233, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: playerRb
+      value: 
+      objectReference: {fileID: 1321978813486919390}
     - target: {fileID: 7891348168103519954, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
