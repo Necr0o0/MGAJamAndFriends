@@ -1,28 +1,40 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
+    [SerializeField] private float ammoReloadTime = 0.2f;
     [SerializeField] private Magazine magazine = default;
-    [SerializeField] private Rigidbody playerRb;
-    
-    public GameObject Bullet;
-    
-    private int ammo;
+    [SerializeField] private Rigidbody playerRb = default;
 
-    private void Start()
+    private int currentShoots = 0;
+    private bool canShoot = false;
+    private bool reloading = false;
+    private WaitForSeconds reloadWait;
+
+    private void Awake()
     {
-        ammo = magazine.MagazineSize;
+        reloadWait = new WaitForSeconds(ammoReloadTime);
+        magazine.Initialize(StopReloading);
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame && !reloading)
+        {
+            reloading = true;
+            StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
+        }
     }
 
     public void Shoot()
     {
-        if (ammo > 0)
+        if (!canShoot || reloading)
+            return;
+        
+        if (currentShoots < magazine.MagazineSize)
         {
-            ammo--;
+            currentShoots++;
             var bullet = GameManager.singleton.bombPool.GetObject(transform.position + playerRb.transform.forward);
 
             BombController bomb = bullet.GetComponent<BombController>();
@@ -31,5 +43,15 @@ public class WeaponController : MonoBehaviour
             var rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = transform.GetChild(0).forward * 10f + playerRb.velocity;
         }
+        else
+        {
+            canShoot = false;
+        }
+    }
+
+    public void StopReloading()
+    {
+        reloading = false;
+        canShoot = true;
     }
 }

@@ -1,52 +1,84 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
-using UnityEngine.InputSystem;
 
 public class Magazine : MonoBehaviour
 {
     [SerializeField] private RawImage image = default;
     [SerializeField] private AmmoColorPallette pallette = default;
+    [SerializeField] private ImageLoader imageLoader = default;
     [SerializeField] private Vector2Int size = new Vector2Int(8, 8);
     public int MagazineSize => size.x * size.y;
 
-    private Texture2D texture;
-    public List<Ammo> magazine = new List<Ammo>();
+    private Texture2D currentTexture;
+    private Texture2D originalImage;
+    private List<Ammo> magazine = new List<Ammo>();
     private int currentIndex;
 
-    private void Awake()
+    public void Initialize(Action onMagazineLoaded)
     {
-        GenerateTexture();
-        texture.filterMode = FilterMode.Point;
-        texture.Apply();
-        image.texture = texture;
+        StartCoroutine(LoadNewTexture(new WaitForSeconds(0.05f), onMagazineLoaded));
     }
 
     public Ammo Shoot()
     {
         Ammo ret = magazine[currentIndex];
         magazine[currentIndex] = null;
-        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, FadeColor(ret.Color));
-        texture.Apply();
+        int x = currentIndex % size.x;
+        int y = size.y - 1 - currentIndex / size.y;
+        currentTexture.SetPixel(x, y, FadeColor(ret.Color));
+        currentTexture.Apply();
+        image.texture = currentTexture;
         currentIndex++;
         return ret;
-    } 
+    }
+
+    public IEnumerator LoadNewTexture(YieldInstruction ammoReloadTime, Action onComplete = null)
+    {
+        originalImage = imageLoader.GetRandomTexture();
+        size = new Vector2Int(originalImage.width, originalImage.height);
+        magazine.Clear();
+        currentIndex = 0;
+        
+        currentTexture = new Texture2D(size.x, size.y, originalImage.format, false);
+        currentTexture.filterMode = FilterMode.Point;
+        image.texture = currentTexture;
+        
+
+        for (int y = 0; y < size.y; y++)
+        {
+            for (int x = size.x - 1; x >= 0; x--)
+            {
+                currentTexture.SetPixel(x, y, originalImage.GetPixel(x, y));
+                magazine.Insert(0, pallette.GetAmmoFromColor(currentTexture.GetPixel(x, y)));
+                if (!(ammoReloadTime is null))
+                {
+                    currentTexture.Apply();
+                    yield return ammoReloadTime;
+                }
+            }
+        }
+        currentTexture.Apply();
+        onComplete?.Invoke();
+        yield return null;
+    }
     
     private void GenerateTexture()
     {
         magazine.Clear();
         currentIndex = 0;
         var texture2 = Resources.Load<Texture2D>("Pyrka");
-        texture = new Texture2D(size.x, size.y);
+        currentTexture = new Texture2D(size.x, size.y);
         for (int y = size.y -1 ; y >= 0; y--)
         {
             for (int x = 0; x < size.x; x++)
             {
                 Ammo randomAmmo = RandomAmmo();
                 magazine.Add(randomAmmo);
-                texture.SetPixel(x, y, texture2.GetPixel(x,y));
+                currentTexture.SetPixel(x, y, texture2.GetPixel(x,y));
             }
         }
     }
@@ -59,7 +91,6 @@ public class Magazine : MonoBehaviour
 
     private Color FadeColor(Color original)
     {
-        original.a = 0.2f;
-        return original;
+        return Color.black;
     }
 }
