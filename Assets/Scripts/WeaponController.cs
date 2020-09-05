@@ -51,6 +51,7 @@ public class WeaponController : MonoBehaviour
 
     public void StopReloading()
     {
+        currentShoots = 0;
         reloading = false;
         canShoot = true;
     }
