@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Particles
+  m_Name: SparkParticle_Mat
   m_Shader: {fileID: -6465566751694194690, guid: e7b0656b3ee29f841a979720d414e9a7,
     type: 3}
   m_ShaderKeywords: 
