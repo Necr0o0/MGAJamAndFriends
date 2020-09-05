@@ -10,16 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52c9ea01fcf9f034d97a989c83eab875, type: 3}
-  m_Name: Push Ammo
+  m_Name: Fake Ammo
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
-  ammoEvents:
-  - action: 1
-    range: 8
-    power: 120
-  - action: 3
-    range: 4
-    power: 0
-  - action: 4
-    range: 4
-    power: 0.8
+  color: {r: 1, g: 0, b: 0, a: 1}
+  ammoEvents: []

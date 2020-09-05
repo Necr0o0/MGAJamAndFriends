@@ -12,7 +12,7 @@ public class WeaponController : MonoBehaviour
     private bool reloading = false;
     private WaitForSeconds reloadWait;
 
-    private void Awake()
+    private void Start()
     {
         reloadWait = new WaitForSeconds(ammoReloadTime);
         magazine.Initialize(StopReloading);
@@ -51,6 +51,7 @@ public class WeaponController : MonoBehaviour
 
     public void StopReloading()
     {
+        currentShoots = 0;
         reloading = false;
         canShoot = true;
     }
