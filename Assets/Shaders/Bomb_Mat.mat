@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player 1
+  m_Name: Bomb_Mat
   m_Shader: {fileID: -6465566751694194690, guid: e805c6b49e0cea54e97628baee6d163e,
     type: 3}
   m_ShaderKeywords: 
@@ -23,5 +23,5 @@ Material:
     m_Floats: []
     m_Colors:
     - Color_72582897: {r: 0.32866475, g: 0.39599854, b: 0.5, a: 0}
-    - Color_F3AAB12B: {r: 0.5283019, g: 0.25288343, b: 0, a: 0}
+    - Color_F3AAB12B: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

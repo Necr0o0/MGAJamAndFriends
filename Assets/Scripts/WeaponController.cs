@@ -18,6 +18,9 @@ public class WeaponController : MonoBehaviour
         {
             ammo--;
             var bullet = GameManager.singleton.bombPool.GetObject(transform.position);
+            
+            var rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(transform.GetChild(0).forward * 1000f);
         }
     }
 

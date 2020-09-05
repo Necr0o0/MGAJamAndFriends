@@ -19,10 +19,9 @@ public class BombController : MonoBehaviour
         float randZ = Random.Range(-1f, 1f);
 
         rb.angularVelocity = new Vector3(randX, randY, randZ) *100f;
-        rb.AddForce(transform.GetChild(0).forward * 1000f);
-        
-        
-        
+        rb.velocity = Vector3.zero;
+        transform.DORestart();
+        transform.DOScale(1.5f, 0.2f).SetLoops(-1, LoopType.Yoyo);
         Debug.Log("Zara wybuchnie");
         var sequence = DOTween.Sequence();
         sequence.AppendInterval(2f);
@@ -49,6 +48,8 @@ public class BombController : MonoBehaviour
                     });
                 }
             }
+
+            GameManager.singleton.explosionPool.GetObject(transform.position);
             transform.gameObject.SetActive(false);
         });
         sequence.Play();
