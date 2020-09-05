@@ -79,8 +79,15 @@ public class PlayerController : MonoBehaviour
         });
     }
     
-    void ScreenShake()
+    void ScreenShake(float distance)
     {
-        camera.DOShakePosition(0.2f, 1f, 30, 10);
+        float maxRadius = 30f;
+        var str = maxRadius / distance;
+        str = Mathf.Clamp(str, 0.5f, 2);
+        Debug.LogWarning("distance"+distance.ToString());
+        Debug.LogWarning("str"+str.ToString());
+
+
+        camera.DOShakePosition(0.2f, 1f * str, 30, 10);
     }
 }

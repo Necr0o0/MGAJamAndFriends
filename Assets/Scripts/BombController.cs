@@ -42,7 +42,8 @@ public class BombController : MonoBehaviour
             }
             foreach (var collider in  Physics.OverlapSphere(transform.position, knockbackRadius*10))
             {
-                collider.SendMessage("ScreenShake",SendMessageOptions.DontRequireReceiver);
+             
+                collider.SendMessage("ScreenShake",   Vector3.Magnitude(transform.position - collider.transform.position),SendMessageOptions.DontRequireReceiver);
             }
 
             GameManager.singleton.explosionPool.GetObject(transform.position);
