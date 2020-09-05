@@ -1,21 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WeaponController : MonoBehaviour
 {
     public int ammo;
     public GameObject Bullet;
+    private Rigidbody rb;
+    
 
 
     public void Shoot()
     {
         if (ammo > 0)
         {
-            var bullet =  Instantiate(Bullet,transform.GetChild(0).position,Quaternion.identity);
-
-            bullet.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
-
+            ammo--;
+            var bullet = GameManager.singleton.bombPool.GetObject(transform.position);
         }
     }
 
