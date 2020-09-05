@@ -39,7 +39,6 @@ public class Magazine : MonoBehaviour
         magazine.Clear();
         currentIndex = 0;
         var texture2 = Resources.Load<Texture2D>("Pyrka");
-        Debug.Log(texture2);
         texture = new Texture2D(size.x, size.y);
         for (int y = size.y -1 ; y >= 0; y--)
         {
