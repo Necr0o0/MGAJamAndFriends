@@ -1503,31 +1503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3185189931849874091, guid: b89990a40ca176c43b125bb7357537ff,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 3185189931849874091, guid: b89990a40ca176c43b125bb7357537ff,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 4879054013989174157, guid: b89990a40ca176c43b125bb7357537ff,
         type: 3}
       propertyPath: imageLoader
       value: 
       objectReference: {fileID: 1658734271}
-    - target: {fileID: 5450594585621561644, guid: b89990a40ca176c43b125bb7357537ff,
-        type: 3}
-      propertyPath: magazine
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5450594585621561644, guid: b89990a40ca176c43b125bb7357537ff,
-        type: 3}
-      propertyPath: ammo
-      value: 36
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89990a40ca176c43b125bb7357537ff, type: 3}
 --- !u!1001 &1977965174

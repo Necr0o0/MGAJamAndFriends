@@ -20,6 +20,7 @@ public class Magazine : MonoBehaviour
 
     public void Initialize(Action onMagazineLoaded)
     {
+        imageLoader = GameManager.singleton.GetComponent<ImageLoader>();
         StartCoroutine(LoadNewTexture(new WaitForSeconds(0.05f), onMagazineLoaded));
     }
 

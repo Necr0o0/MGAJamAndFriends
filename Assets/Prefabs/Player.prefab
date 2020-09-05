@@ -518,6 +518,16 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 1321978813486919390}
+    - target: {fileID: 6048121813397768886, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048121813397768886, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 7891348168103519954, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
