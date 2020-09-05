@@ -20,7 +20,7 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.rKey.wasPressedThisFrame && !reloading)
+        if ( (Keyboard.current.rKey.wasPressedThisFrame || Gamepad.current.xButton.wasPressedThisFrame) && !reloading)
         {
             reloading = true;
             StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
