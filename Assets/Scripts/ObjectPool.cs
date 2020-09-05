@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ObjectToPool;
+    private GameObject ObjectToPool = default;
     private List<GameObject> ObjectPooling = new List<GameObject>();
 
     public void Start()
