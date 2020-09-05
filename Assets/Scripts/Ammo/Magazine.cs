@@ -10,7 +10,8 @@ public class Magazine : MonoBehaviour
     [SerializeField] private RawImage image = default;
     [SerializeField] private AmmoColorPallette pallette = default;
     [SerializeField] private Vector2Int size = new Vector2Int(8, 8);
-    
+    public int MagazineSize => size.x * size.y;
+
     private Texture2D texture;
     public List<Ammo> magazine = new List<Ammo>();
     private int currentIndex;
@@ -23,17 +24,11 @@ public class Magazine : MonoBehaviour
         image.texture = texture;
     }
 
-    private void Update()
-    {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-            Shoot();
-    }
-
     public Ammo Shoot()
     {
         Ammo ret = magazine[currentIndex];
         magazine[currentIndex] = null;
-        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, Color.clear);
+        texture.SetPixel(currentIndex%size.x, size.y - 1 - currentIndex / size.x, FadeColor(ret.Color));
         texture.Apply();
         currentIndex++;
         return ret;
@@ -43,6 +38,8 @@ public class Magazine : MonoBehaviour
     {
         magazine.Clear();
         currentIndex = 0;
+        var texture2 = Resources.Load<Texture2D>("Pyrka");
+        Debug.Log(texture2);
         texture = new Texture2D(size.x, size.y);
         for (int y = size.y -1 ; y >= 0; y--)
         {
@@ -50,7 +47,7 @@ public class Magazine : MonoBehaviour
             {
                 Ammo randomAmmo = RandomAmmo();
                 magazine.Add(randomAmmo);
-                texture.SetPixel(x, y, randomAmmo.Color);
+                texture.SetPixel(x, y, texture2.GetPixel(x,y));
             }
         }
     }
@@ -59,5 +56,11 @@ public class Magazine : MonoBehaviour
     {
         return pallette.allAmmo[Random.Range(0, pallette.allAmmo.Count)];
         //return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+    }
+
+    private Color FadeColor(Color original)
+    {
+        original.a = 0.2f;
+        return original;
     }
 }

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,8 +8,11 @@ public class PlayerController : MonoBehaviour
     public WeaponController weapon;
 
     [Space]
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float lerpIntensity = 3f;
     [SerializeField] private float maxVelocity = 20f;
     [SerializeField] private float jumpPower = 10f;
+    private bool isGrounded;
     
     public static Transform TransformComponent { get; private set; }
     
@@ -18,12 +22,20 @@ public class PlayerController : MonoBehaviour
     private new Transform camera;
     private new Transform transform;
 
+    private Vector3 inputMove = Vector2.zero;
+    private Vector3 moveDir = Vector2.zero;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         transform = ((Component) this).transform;
         TransformComponent = transform;
         camera = transform.GetChild(0);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        isGrounded = true;
     }
 
     void Update()
@@ -34,14 +46,15 @@ public class PlayerController : MonoBehaviour
             return; // No gamepad connected.
         }
 
-        if (gamepad.rightTrigger.wasPressedThisFrame)
+        if (gamepad.rightTrigger.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
            weapon.Shoot();
         }
 
-        if (gamepad.aButton.wasPressedThisFrame)
+        if (gamepad.aButton.wasPressedThisFrame && isGrounded)
         {
             rb.velocity += Vector3.up * jumpPower;
+            isGrounded = false;
         }
         
         moveCamera += gamepad.rightStick.ReadValue();
@@ -51,13 +64,17 @@ public class PlayerController : MonoBehaviour
         camera.localEulerAngles = new Vector3(-moveCamera.y,0,0);
         transform.localEulerAngles = new Vector3(0,moveCamera.x,0);
 
-        Vector2 move = gamepad.leftStick.ReadValue();
-        var moveDir = (move.x * transform.right + move.y * transform.forward).normalized;
-        rb.AddForce( moveDir*0.1f ,ForceMode.VelocityChange);
-        
-        rb.AddForce(Vector3.down *2f);
+        Vector2 input = gamepad.leftStick.ReadValue();
+        inputMove = (input.x * transform.right + input.y * transform.forward).normalized;
+    }
 
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10f);
+    private void FixedUpdate()
+    {
+        moveDir = Vector3.Lerp(moveDir, inputMove, Time.deltaTime * lerpIntensity);
+        
+        rb.MovePosition(transform.position + moveDir * (Time.fixedDeltaTime * speed));
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxVelocity) + moveDir * (Time.fixedDeltaTime * speed);
     }
 
     void Explosion()
@@ -69,5 +86,14 @@ public class PlayerController : MonoBehaviour
         { 
             transform.GetComponent<PlayerController>().enabled = true;
         });
+    }
+    
+    void ScreenShake(float distance)
+    {
+        float maxRadius = 30f;
+        var str = maxRadius / distance;
+        str = Mathf.Clamp(str, 0.5f, 2);
+
+        camera.DOShakePosition(0.2f, 1f * str, 30, 10);
     }
 }

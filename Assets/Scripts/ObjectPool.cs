@@ -9,7 +9,7 @@ public class ObjectPool : MonoBehaviour
     private GameObject ObjectToPool = default;
     private List<GameObject> ObjectPooling = new List<GameObject>();
 
-    public void Start()
+    public void Awake()
     {
         for (int i = 0; i< 20; i++)
         {
@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
-        return Instantiate(ObjectToPool, position, Quaternion.identity);
+        return Instantiate(ObjectToPool,transform);
     }
     
     public void TurnOff(GameObject toShut)

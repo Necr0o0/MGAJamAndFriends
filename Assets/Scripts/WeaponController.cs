@@ -6,23 +6,30 @@ using Random = UnityEngine.Random;
 
 public class WeaponController : MonoBehaviour
 {
-    public int ammo;
-    public GameObject Bullet;
-    private Rigidbody rb;
+    [SerializeField] private Magazine magazine = default;
+    [SerializeField] private Rigidbody playerRb;
     
+    public GameObject Bullet;
+    
+    private int ammo;
 
+    private void Start()
+    {
+        ammo = magazine.MagazineSize;
+    }
 
     public void Shoot()
     {
         if (ammo > 0)
         {
             ammo--;
-            var bullet = GameManager.singleton.bombPool.GetObject(transform.position);
+            var bullet = GameManager.singleton.bombPool.GetObject(transform.position + playerRb.transform.forward);
+
+            BombController bomb = bullet.GetComponent<BombController>();
             
+            bomb.Initialize(magazine.Shoot());
             var rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(transform.GetChild(0).forward * 1000f);
+            rb.velocity = transform.GetChild(0).forward * 10f + playerRb.velocity;
         }
     }
-
-
 }

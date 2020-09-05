@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88abc5b057378d24196f9b8dc85eafe0, type: 3}
   m_Name: New Ammo Color Pallette
   m_EditorClassIdentifier: 
-  allAmmo: []
+  allAmmo:
+  - {fileID: 11400000, guid: bdbd55072026f76488e305b8622f00d8, type: 2}
+  - {fileID: 11400000, guid: 116657e2822c7474f9ea7a6e16b93037, type: 2}
