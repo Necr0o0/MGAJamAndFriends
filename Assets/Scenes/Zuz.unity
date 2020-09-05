@@ -1767,12 +1767,32 @@ PrefabInstance:
     - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].time
-      value: 0.88189715
+      value: 0.6929323
       objectReference: {fileID: 0}
     - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].value
       value: 0.18461609
+      objectReference: {fileID: 0}
+    - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].inSlope
+      value: -4.0816846
+      objectReference: {fileID: 0}
+    - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].outSlope
+      value: -4.0816846
+      objectReference: {fileID: 0}
+    - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].inWeight
+      value: 0.49744305
+      objectReference: {fileID: 0}
+    - target: {fileID: 783898312912330558, guid: b19121f9e1264534d9cfca7b641c988f,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 783898312912330559, guid: b19121f9e1264534d9cfca7b641c988f,
         type: 3}
