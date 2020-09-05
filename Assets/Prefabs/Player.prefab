@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5bcec76e66339fe45946863a5fa81dd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 5450594585621561644}
+  maxVelocity: 20
+  jumpPower: 10
 --- !u!1 &1321978814635570326
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +237,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -251,6 +253,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1321978814635570327}
     m_Modifications:
+    - target: {fileID: 3481888084789002821, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5bcec76e66339fe45946863a5fa81dd7, type: 2}
+    - target: {fileID: 7891348168103519954, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5bcec76e66339fe45946863a5fa81dd7, type: 2}
     - target: {fileID: 7891348168103519964, guid: 1f362e01ec1421947b5bf1fe4554fa0f,
         type: 3}
       propertyPath: m_LocalPosition.x
