@@ -48,6 +48,8 @@ public class BombController : MonoBehaviour
                     });
                 }
             }
+
+            GameManager.singleton.explosionPool.GetObject(transform.position);
             transform.gameObject.SetActive(false);
         });
         sequence.Play();
