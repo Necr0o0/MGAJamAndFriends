@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -52,6 +53,21 @@ public class PlayerController : MonoBehaviour
 
         Vector2 move = gamepad.leftStick.ReadValue();
         var moveDir = (move.x * transform.right + move.y * transform.forward).normalized;
-        rb.velocity = moveDir * 10f;
+        rb.AddForce( moveDir*0.1f ,ForceMode.VelocityChange);
+        
+        rb.AddForce(Vector3.down *2f);
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10f);
+    }
+
+    void Explosion()
+    {
+        transform.GetComponent<PlayerController>().enabled = false;
+        var sequnenceLost = DOTween.Sequence();
+        sequnenceLost.AppendInterval(1f);
+        sequnenceLost.OnComplete(() =>
+        { 
+            transform.GetComponent<PlayerController>().enabled = true;
+        });
     }
 }
