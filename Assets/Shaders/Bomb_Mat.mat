@@ -23,5 +23,5 @@ Material:
     m_Floats: []
     m_Colors:
     - Color_72582897: {r: 0.32866475, g: 0.39599854, b: 0.5, a: 0}
-    - Color_F3AAB12B: {r: 0, g: 0, b: 0, a: 0}
+    - Color_F3AAB12B: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0}
   m_BuildTextureStacks: []
