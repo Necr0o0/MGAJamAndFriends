@@ -10,6 +10,7 @@
         <e p="Scripts" t="Include">
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
+        <e p="WeaponController.cs" t="Include" />
       </e>
       <e p="MGA_Friends.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
