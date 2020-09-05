@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 390333603}
+  - component: {fileID: 2200295078483952937}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BombPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,6 +31,20 @@ Transform:
   m_Father: {fileID: 8338909424336714955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2200295078483952937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390333602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a609ccca515ce64ba10d63631459c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToPool: {fileID: 2319982734481033019, guid: b2857a81fdd26bb40897f4ee03426331,
+    type: 3}
 --- !u!1 &1924762508259071154
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8338909424336714955}
-  - component: {fileID: -3191841295089605924}
+  - component: {fileID: 953882122}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,7 +77,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3191841295089605924
+--- !u!114 &953882122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,3 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da33d019f5e48b4e863453c5fe4bffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombPool: {fileID: 2200295078483952937}

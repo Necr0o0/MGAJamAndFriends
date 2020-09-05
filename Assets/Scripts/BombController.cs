@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BombController : MonoBehaviour
 {
@@ -10,8 +11,18 @@ public class BombController : MonoBehaviour
     private float knockbackPower = 500f;
     [SerializeField]
     private float knockbackRadius = 3f;
-    void Start()
+    void OnEnable()
     {
+        var rb = transform.GetComponent<Rigidbody>();
+        float randX = Random.Range(-1f, 1f);
+        float randY = Random.Range(-1f, 1f);
+        float randZ = Random.Range(-1f, 1f);
+
+        rb.angularVelocity = new Vector3(randX, randY, randZ) *100f;
+        rb.AddForce(transform.GetChild(0).forward * 1000f);
+        
+        
+        
         Debug.Log("Zara wybuchnie");
         var sequence = DOTween.Sequence();
         sequence.AppendInterval(2f);
@@ -37,7 +48,6 @@ public class BombController : MonoBehaviour
 
                     });
                 }
-                  
             }
             transform.gameObject.SetActive(false);
         });
