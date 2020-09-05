@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,8 @@ public class BombController : MonoBehaviour
     [Space]
     [SerializeField] private float knockbackRadius = 3f;
 
-    private Ammo ammo;
+    [HideInInspector]
+    public Ammo ammo;
     private static readonly int BaseColor = Shader.PropertyToID("Color_F3AAB12B");
 
     void OnEnable()
@@ -39,6 +41,10 @@ public class BombController : MonoBehaviour
         
         renderer.SetPropertyBlock(block);
     }
+    public void PyraInit(Ammo ammo)
+    {
+        this.ammo = ammo;
+    }
 
     private void Boom()
     {
@@ -61,5 +67,14 @@ public class BombController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position,knockbackRadius);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.GetComponent<JumpyEnemy>() && !transform.GetComponent<JumpyEnemy>())
+        {
+            other.transform.GetComponent<JumpyEnemy>().PyraBomb(transform.GetComponent<BombController>());
+            GameManager.singleton.bombPool.TurnOff(gameObject);
+        }
     }
 }

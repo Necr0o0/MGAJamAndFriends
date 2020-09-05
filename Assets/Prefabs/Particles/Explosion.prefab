@@ -44,7 +44,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 0.7
   simulationSpeed: 3
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4888,6 +4888,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783898312912330559}
     m_Modifications:
+    - target: {fileID: 6488770153177976520, guid: 5a711e4330d6871498c90d0164a2ec7d,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6488770153177976521, guid: 5a711e4330d6871498c90d0164a2ec7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5401,6 +5406,11 @@ PrefabInstance:
     - target: {fileID: 8128011093744995007, guid: 9817f2da55cbcdd47a4772989f18b80a,
         type: 3}
       propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128011093744995007, guid: 9817f2da55cbcdd47a4772989f18b80a,
+        type: 3}
+      propertyPath: stopAction
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

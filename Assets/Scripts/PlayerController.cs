@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
            weapon.Shoot();
+           camera.DOShakePosition(0.1f, 0.6f , 0, 0);
+
         }
 
         if (gamepad.aButton.wasPressedThisFrame && isGrounded)

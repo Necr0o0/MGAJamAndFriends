@@ -60,4 +60,16 @@ public class JumpyEnemy : Enemy
     {
         rb.AddForce((Vector3.up + transform.forward) * speed, ForceMode.Impulse);
     }
+
+    public void PyraBomb(BombController bombController)
+    { 
+        var pyraBomb = transform.GetComponent<BombController>();
+        transform.GetChild(0).gameObject.SetActive(true);
+        pyraBomb.enabled = true;
+        
+        pyraBomb.PyraInit(bombController.ammo);
+       
+       
+        
+    }
 }
