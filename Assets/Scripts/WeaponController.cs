@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private float ammoReloadTime = 2.2f;
+    [SerializeField] private float cooldown = 0.3f;
     [SerializeField] private Magazine magazine = default;
     [SerializeField] private Rigidbody playerRb = default;
     private Gamepad _gamepad;
@@ -12,20 +15,18 @@ public class WeaponController : MonoBehaviour
     private bool canShoot = false;
     private bool reloading = false;
     private WaitForSeconds reloadWait;
-
-    public void SetPad(Gamepad gamepad)
-    {
-        _gamepad = gamepad;
-    }
+    private WaitForSeconds cooldownWait;
+    
     private void Start()
     {
         reloadWait = new WaitForSeconds(ammoReloadTime);
+        cooldownWait = new WaitForSeconds(cooldown);
         magazine.Initialize(StopReloading);
     }
 
     private void Update()
     {
-        if ( (Gamepad.current.xButton.wasPressedThisFrame) && !reloading)
+        if ( Gamepad.current != null && Gamepad.current.xButton.wasPressedThisFrame && !reloading)
         {
             reloading = true;
             StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
@@ -39,6 +40,8 @@ public class WeaponController : MonoBehaviour
         
         if (currentShoots < magazine.MagazineSize)
         {
+            GetComponentInParent<PlayerController>().ShootShake();
+            transform.GetChild(1).gameObject.SetActive(true);
             currentShoots++;
             var bullet = GameManager.singleton.bombPool.GetObject(transform.position + playerRb.transform.forward);
 
@@ -47,11 +50,20 @@ public class WeaponController : MonoBehaviour
             bomb.Initialize(magazine.Shoot());
             var rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = transform.GetChild(0).forward * 10f + playerRb.velocity;
+
+            StartCoroutine(Cooldown());
         }
         else
         {
             canShoot = false;
         }
+    }
+
+    IEnumerator Cooldown()
+    {
+        canShoot = false;
+        yield return cooldownWait;
+        canShoot = true;
     }
 
     public void StopReloading()
