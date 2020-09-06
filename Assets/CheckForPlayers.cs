@@ -15,9 +15,9 @@ public class CheckForPlayers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputDevice.all.Count > 1)
+        if (InputSystem.devices.Count > 1)
         {
-            Debug.LogWarning(InputDevice.all.Count);
+            Debug.LogWarning(InputSystem.devices.Count);
             SceneManager.LoadScene("Level1");
         }
     }
