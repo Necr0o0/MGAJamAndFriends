@@ -41,7 +41,7 @@ public class Magazine : MonoBehaviour
 
         //SetTextureToRenderer();
         currentIndex++;
-        Color color = magazine[currentIndex].Color;
+        Color color = magazine[currentIndex%MagazineSize].Color;
         weaponBombMaterial.SetColor("Color_96BF9729",color);
         
         return ret;

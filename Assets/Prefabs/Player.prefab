@@ -129,10 +129,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 4031910684287311240}
+  _playerInput: {fileID: 9022998946159290387}
   speed: 10
   lerpIntensity: 3
   maxVelocity: 20
-  jumpPower: 10
+  jumpPower: 7
 --- !u!114 &9022998946159290387
 MonoBehaviour:
   m_ObjectHideFlags: 0

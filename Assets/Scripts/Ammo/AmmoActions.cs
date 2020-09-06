@@ -69,6 +69,7 @@ public static class AmmoActions
         {
             if (collider.GetComponent<Rigidbody>())
             {
+                collider.SendMessage("Explosion", SendMessageOptions.DontRequireReceiver);
                 Vector3 distance = collider.transform.position - origin;
                     collider.transform.GetComponent<Rigidbody>().AddForce((ammoEvent.range - distance.magnitude) * ammoEvent.power * (distance.normalized+ Vector3.up * 0.4f));
             }
