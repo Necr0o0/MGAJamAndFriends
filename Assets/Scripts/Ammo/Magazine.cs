@@ -11,6 +11,7 @@ public class Magazine : MonoBehaviour
     [SerializeField] private Renderer weaponScreen;
     [SerializeField] private AmmoColorPallette pallette = default;
     [SerializeField] private ImageLoader imageLoader = default;
+    [SerializeField] private Material bombInsideMaterial;
     
     public int MagazineSize => size.x * size.y;
 
@@ -20,6 +21,8 @@ public class Magazine : MonoBehaviour
     private Vector2Int size = new Vector2Int(8, 8);
     private int currentIndex;
     private static readonly int Texture2DB07Fc10B = Shader.PropertyToID("Texture2D_B07FC10B");
+
+    [SerializeField] private Material weaponBombMaterial;
 
     public void Initialize(Action onMagazineLoaded)
     {
@@ -38,6 +41,9 @@ public class Magazine : MonoBehaviour
 
         //SetTextureToRenderer();
         currentIndex++;
+        Color color = magazine[currentIndex].Color;
+        weaponBombMaterial.SetColor("Color_96BF9729",color);
+        
         return ret;
     }
 
