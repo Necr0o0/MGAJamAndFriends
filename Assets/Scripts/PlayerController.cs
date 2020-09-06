@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public WeaponController weapon;
-    private PlayerInputManager _playerInputManager;
+    [SerializeField] private PlayerInput _playerInput;
 
     [Space]
     [SerializeField] private float speed = 10f;
@@ -98,5 +98,27 @@ public class PlayerController : MonoBehaviour
         str = Mathf.Clamp(str, 0.5f, 2);
 
         camera.DOShakePosition(0.2f, 1f * str, 30, 10);
+    }
+
+    public void ChangeRect(int allPlayers)
+    {
+        if (!camera)
+            camera = GetComponent<Transform>().GetChild(0);
+        Camera cameraComponent = camera.GetComponent<Camera>();
+        Rect cameraRect = new Rect();
+        cameraRect.width = 1;
+        if (allPlayers == 1)
+        {
+            cameraRect.height = 1;
+        }
+
+        if (allPlayers == 2)
+        {
+            cameraRect.height = 0.5f;
+            if (_playerInput.playerIndex == 1)
+                cameraRect.y = 0.5f;
+        }
+
+        cameraComponent.rect = cameraRect;
     }
 }
