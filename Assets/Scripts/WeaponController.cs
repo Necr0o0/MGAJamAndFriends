@@ -39,6 +39,8 @@ public class WeaponController : MonoBehaviour
         
         if (currentShoots < magazine.MagazineSize)
         {
+            GetComponentInParent<PlayerController>().ShootShake();
+            transform.GetChild(1).gameObject.SetActive(true);
             currentShoots++;
             var bullet = GameManager.singleton.bombPool.GetObject(transform.position + playerRb.transform.forward);
 

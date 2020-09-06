@@ -52,8 +52,6 @@ public class PlayerController : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
            weapon.Shoot();
-           camera.DOShakePosition(0.1f, 0.6f , 0, 0);
-
         }
 
         if (gamepad.aButton.wasPressedThisFrame && isGrounded)
@@ -91,6 +89,11 @@ public class PlayerController : MonoBehaviour
         { 
             transform.GetComponent<PlayerController>().enabled = true;
         });
+    }
+
+    public void ShootShake()
+    {
+        camera.DOShakePosition(0.1f, 0.6f , 0, 0);
     }
     
     void ScreenShake(float distance)
