@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bomb_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: e805c6b49e0cea54e97628baee6d163e,
+  m_Shader: {fileID: -6465566751694194690, guid: 40e60a52d1221224b815e1a4c962bb13,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,9 +19,24 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - Texture2D_22A4AEB7:
+        m_Texture: {fileID: 2800000, guid: a0b97c368f552044f8d5d99e5f83b3e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6F0CA36B:
+        m_Texture: {fileID: 2800000, guid: 92ed5d36b5e390945a499657731d0bc9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_EC50FEA7:
+        m_Texture: {fileID: 2800000, guid: 1f4e5ec15aef82c4c951be6c397b258c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
     - Color_72582897: {r: 0.32866475, g: 0.39599854, b: 0.5, a: 0}
+    - Color_89C2CD18: {r: 0, g: 0.9802479, b: 1, a: 0}
+    - Color_96BF9729: {r: 0.28235295, g: 2.9333334, b: 2.9960785, a: 0}
+    - Color_E697F05A: {r: 0.42452827, g: 0.42452827, b: 0.42452827, a: 0}
     - Color_F3AAB12B: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0}
   m_BuildTextureStacks: []
