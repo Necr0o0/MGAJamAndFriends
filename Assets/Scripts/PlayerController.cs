@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         transform = ((Component) this).transform;
         TransformComponent = transform;
         camera = transform.GetChild(0);
-        gamepad = Gamepad.all[GameManager.singleton.joinedPlayers];
+        gamepad = Gamepad.current;
         GameManager.singleton.joinedPlayers++;
         weapon.SetPad(gamepad);
 

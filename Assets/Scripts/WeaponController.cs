@@ -25,7 +25,7 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        if ( (_gamepad.xButton.wasPressedThisFrame) && !reloading)
+        if ( (Gamepad.current.xButton.wasPressedThisFrame) && !reloading)
         {
             reloading = true;
             StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
