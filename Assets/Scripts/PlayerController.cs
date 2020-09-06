@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
         camera = transform.GetChild(0);
         gamepad = Gamepad.current;
         GameManager.singleton.joinedPlayers++;
-        weapon.SetPad(gamepad);
-
     }
 
     private void OnCollisionEnter(Collision other)
