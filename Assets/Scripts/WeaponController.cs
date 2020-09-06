@@ -16,7 +16,11 @@ public class WeaponController : MonoBehaviour
     private bool reloading = false;
     private WaitForSeconds reloadWait;
     private WaitForSeconds cooldownWait;
-    
+
+    public void SetPad(Gamepad gamepad)
+    {
+        _gamepad = gamepad;
+    }
     private void Start()
     {
         reloadWait = new WaitForSeconds(ammoReloadTime);
@@ -26,7 +30,7 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        if ( Gamepad.current != null && Gamepad.current.xButton.wasPressedThisFrame && !reloading)
+        if ( _gamepad != null && _gamepad.xButton.wasPressedThisFrame && !reloading)
         {
             reloading = true;
             StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
