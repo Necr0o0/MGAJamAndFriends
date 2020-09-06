@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] private float ammoReloadTime = 0.2f;
+    [SerializeField] private float ammoReloadTime = 2.2f;
     [SerializeField] private Magazine magazine = default;
     [SerializeField] private Rigidbody playerRb = default;
     private Gamepad _gamepad;

@@ -11,7 +11,7 @@ public class ArenaBorderManager : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
