@@ -9725,7 +9725,7 @@ PrefabInstance:
     - target: {fileID: 4101786243149088260, guid: bc54a2abb32e77f4f885b918c084c1d7,
         type: 3}
       propertyPath: m_MaintainAspectRatioInSplitScreen
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101786243149088260, guid: bc54a2abb32e77f4f885b918c084c1d7,
         type: 3}
@@ -9741,6 +9741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FixedNumberOfSplitScreens
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101786243149088260, guid: bc54a2abb32e77f4f885b918c084c1d7,
+        type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4101786243149088282, guid: bc54a2abb32e77f4f885b918c084c1d7,
         type: 3}
@@ -19140,7 +19145,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-850692
+  m_Name: pb_Mesh-13758
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41694,7 +41699,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh456800
+  m_Name: pb_Mesh22548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
