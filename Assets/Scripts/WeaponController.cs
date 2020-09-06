@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private float ammoReloadTime = 2.2f;
-    [SerializeField] private float cooldown = 0.3f;
+    [SerializeField] private float cooldown = 0.7f;
     [SerializeField] private Magazine magazine = default;
     [SerializeField] private Rigidbody playerRb = default;
     private Gamepad _gamepad;

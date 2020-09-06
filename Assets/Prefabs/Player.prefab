@@ -221,7 +221,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -300,17 +300,17 @@ PrefabInstance:
     - target: {fileID: 4470987999164757127, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.304
+      value: 0.324
       objectReference: {fileID: 0}
     - target: {fileID: 4470987999164757127, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.013000011
+      value: -0.022
       objectReference: {fileID: 0}
     - target: {fileID: 4470987999164757127, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1299591
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4470987999164757127, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
@@ -357,6 +357,11 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 1321978813486919390}
+    - target: {fileID: 4953949797779457255, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalRotation.x
