@@ -2,21 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Magazine : MonoBehaviour
 {
-    [SerializeField] private RawImage image = default;
+    [SerializeField] private Renderer weaponScreen;
     [SerializeField] private AmmoColorPallette pallette = default;
     [SerializeField] private ImageLoader imageLoader = default;
-    [SerializeField] private Vector2Int size = new Vector2Int(8, 8);
+    
     public int MagazineSize => size.x * size.y;
 
     private Texture2D currentTexture;
     private Texture2D originalImage;
     private List<Ammo> magazine = new List<Ammo>();
+    private Vector2Int size = new Vector2Int(8, 8);
     private int currentIndex;
+    private static readonly int Texture2DB07Fc10B = Shader.PropertyToID("Texture2D_B07FC10B");
 
     public void Initialize(Action onMagazineLoaded)
     {
@@ -32,7 +35,8 @@ public class Magazine : MonoBehaviour
         int y = size.y - 1 - currentIndex / size.y;
         currentTexture.SetPixel(x, y, FadeColor(ret.Color));
         currentTexture.Apply();
-        image.texture = currentTexture;
+
+        //SetTextureToRenderer();
         currentIndex++;
         return ret;
     }
@@ -46,7 +50,7 @@ public class Magazine : MonoBehaviour
         
         currentTexture = new Texture2D(size.x, size.y, originalImage.format, false);
         currentTexture.filterMode = FilterMode.Point;
-        image.texture = currentTexture;
+        SetTextureToRenderer();
         
 
         for (int y = 0; y < size.y; y++)
@@ -62,11 +66,12 @@ public class Magazine : MonoBehaviour
                 }
             }
         }
+        
         currentTexture.Apply();
         onComplete?.Invoke();
         yield return null;
     }
-    
+
     private void GenerateTexture()
     {
         magazine.Clear();
@@ -92,6 +97,15 @@ public class Magazine : MonoBehaviour
 
     private Color FadeColor(Color original)
     {
-        return Color.black;
+        return new Color(0,0,0,0);
+    }
+
+    private void SetTextureToRenderer()
+    {
+        var block = new MaterialPropertyBlock();
+        
+        block.SetTexture(Texture2DB07Fc10B, currentTexture);
+        
+        weaponScreen.SetPropertyBlock(block);
     }
 }

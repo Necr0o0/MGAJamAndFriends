@@ -16,7 +16,7 @@ MonoBehaviour:
   ammoEvents:
   - action: 1
     range: 8
-    power: 120
+    power: 500
   - action: 3
     range: 4
     power: 0

@@ -49,9 +49,6 @@ public class BombController : MonoBehaviour
     private void Boom()
     {
         AmmoActions.UseEvents(transform.position, ammo.ammoEvents);
-        
-        
-        
 
         GameManager.singleton.explosionPool.GetObject(transform.position);
         transform.gameObject.SetActive(false);

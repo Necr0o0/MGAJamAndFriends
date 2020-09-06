@@ -3,15 +3,20 @@ using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] private float ammoReloadTime = 0.2f;
+    [SerializeField] private float ammoReloadTime = 2.2f;
     [SerializeField] private Magazine magazine = default;
     [SerializeField] private Rigidbody playerRb = default;
+    private Gamepad _gamepad;
 
     private int currentShoots = 0;
     private bool canShoot = false;
     private bool reloading = false;
     private WaitForSeconds reloadWait;
 
+    public void SetPad(Gamepad gamepad)
+    {
+        _gamepad = gamepad;
+    }
     private void Start()
     {
         reloadWait = new WaitForSeconds(ammoReloadTime);
@@ -20,7 +25,7 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        if ( (Keyboard.current.rKey.wasPressedThisFrame || Gamepad.current.xButton.wasPressedThisFrame) && !reloading)
+        if ( (_gamepad.xButton.wasPressedThisFrame) && !reloading)
         {
             reloading = true;
             StartCoroutine(magazine.LoadNewTexture(reloadWait, StopReloading));
