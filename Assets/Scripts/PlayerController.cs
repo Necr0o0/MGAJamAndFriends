@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private Gamepad gamepad;
     private new Transform camera;
     private new Transform transform;
-
     private Vector3 inputMove = Vector2.zero;
     private Vector3 moveDir = Vector2.zero;
 
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
         camera = transform.GetChild(0);
         gamepad = Gamepad.all[GameManager.singleton.joinedPlayers];
         GameManager.singleton.joinedPlayers++;
+        weapon.SetPad(gamepad);
 
     }
 
