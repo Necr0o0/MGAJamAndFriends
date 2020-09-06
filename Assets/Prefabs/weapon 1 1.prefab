@@ -664,6 +664,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunFireSmoke
       objectReference: {fileID: 0}
+    - target: {fileID: 6961481461685886264, guid: 5134c90f363371048a23573178367100,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6961481461685886269, guid: 5134c90f363371048a23573178367100,
         type: 3}
       propertyPath: m_LocalPosition.x

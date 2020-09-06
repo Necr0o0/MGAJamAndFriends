@@ -165,6 +165,7 @@ MonoBehaviour:
   playerFinder:
     sightRadius: 15
     sightAngle: 90
+  pyraRender: {fileID: 7370145461497898241}
 --- !u!114 &5903083282823286377
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -133,7 +133,7 @@ MonoBehaviour:
   speed: 10
   lerpIntensity: 3
   maxVelocity: 20
-  jumpPower: 10
+  jumpPower: 7
 --- !u!114 &9022998946159290387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,23 +380,58 @@ PrefabInstance:
     - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 190
       objectReference: {fileID: 0}
+    - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180197825363581417, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180197825363581420, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180197825363581422, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664535547687727590, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: bombInsideMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 86523d831707b1a43a614289b560180c, type: 2}
+    - target: {fileID: 5664535547687727590, guid: 4a4407099ac0f724d8b078f53f4887d1,
+        type: 3}
+      propertyPath: weaponBombMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 86523d831707b1a43a614289b560180c, type: 2}
     - target: {fileID: 8584987326073116840, guid: 4a4407099ac0f724d8b078f53f4887d1,
         type: 3}
       propertyPath: m_LocalPosition.x

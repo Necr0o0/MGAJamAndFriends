@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c9ea01fcf9f034d97a989c83eab875, type: 3}
   m_Name: Fake Ammo
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0, a: 1}
-  ammoEvents: []
+  color: {r: 0.6666667, g: 0, b: 1, a: 1}
+  ammoEvents:
+  - action: 5
+    range: 0
+    power: 0

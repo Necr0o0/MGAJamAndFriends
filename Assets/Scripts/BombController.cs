@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -49,9 +50,11 @@ public class BombController : MonoBehaviour
     private void Boom()
     {
         AmmoActions.UseEvents(transform.position, ammo.ammoEvents);
-
-        GameManager.singleton.explosionPool.GetObject(transform.position);
-        transform.gameObject.SetActive(false);
+        if (ammo.AmmoEvents.All(x => x.action != AmmoActions.Action.DoNothing))
+        {
+            GameManager.singleton.explosionPool.GetObject(transform.position);
+            transform.gameObject.SetActive(false);
+        }
     }
 
     private void OnDrawGizmos()
