@@ -12,7 +12,8 @@ public static class AmmoActions
         PushBack,
         PullIn,
         Explosion,
-        ScreenShake
+        ScreenShake,
+        DoNothing
     }
 
     public static void UseEvents(Vector3 origin, List<AmmoEvent> ammoEvents)
