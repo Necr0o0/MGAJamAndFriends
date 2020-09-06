@@ -13,7 +13,7 @@ public class RestartGame : MonoBehaviour
     {
        if(Gamepad.current.aButton.wasPressedThisFrame) 
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Level" + Random.Range(0,2));
         }
     }
 }

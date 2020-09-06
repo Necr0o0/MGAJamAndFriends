@@ -10,6 +10,9 @@ public class JumpyEnemy : Enemy
     [Space]
     [SerializeField] PlayerFinder playerFinder;
 
+    public Renderer pyraRender;
+    //Color_DCC0BD5
+
     private WaitForSeconds yieldWait;
 
     protected override void Awake()
@@ -63,9 +66,16 @@ public class JumpyEnemy : Enemy
 
     public void PyraBomb(BombController bombController)
     { 
+        
         var pyraBomb = transform.GetComponent<BombController>();
         transform.GetChild(0).gameObject.SetActive(true);
         pyraBomb.enabled = true;
+        
+        var block = new MaterialPropertyBlock();
+        
+        block.SetColor("Color_ACC3A391", bombController.ammo.Color);
+        
+        pyraRender.SetPropertyBlock(block);
         
         pyraBomb.PyraInit(bombController.ammo);
        
